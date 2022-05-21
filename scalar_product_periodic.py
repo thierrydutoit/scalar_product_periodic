@@ -40,7 +40,7 @@ st.pyplot(fig1)
 col1, col2 = st.columns(2)
 
 with col1:
-   f=st.slider('Frequency of the phasor: f [Hz]', 0, 10, 1)
+   f=st.slider('Frequency of the phasor: f [Hz]', -10, 10, 1)
 
 #st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{-dur/2}^{dur/2} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 
