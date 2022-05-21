@@ -8,9 +8,9 @@ st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 4)
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 1)
 with col2:
-   dur=st.slider('Duration [s]',1, 20, 1)
+   dur=st.slider('Duration [s]',1, 20, 4)
 
 fe=10000;
 t=arange(-dur/2,dur/2,1/fe) 
@@ -40,7 +40,7 @@ st.pyplot(fig1)
 col1, col2 = st.columns(2)
 
 with col1:
-   f=st.slider('Frequency of the phasor: f [Hz]', -10, 10, 1)
+   f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
 
 #st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{-dur/2}^{dur/2} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 
