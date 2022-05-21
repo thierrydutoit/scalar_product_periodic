@@ -8,7 +8,7 @@ st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 1)
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 4)
 with col2:
    dur=st.slider('Duration [s]',1, 20, 1)
 
