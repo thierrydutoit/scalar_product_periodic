@@ -60,6 +60,7 @@ with col1:
    #ax = axes(projection='3d')
    ax.plot3D(t, phasor_real, phasor_imag, 'gray')
    ax.plot3D(t, prod_real, prod_imag, 'blue')
+   plot(fig)
 
 with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
@@ -69,7 +70,7 @@ with col2:
    ax.plot(time_stamp_arg,time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs,'o')
    st.pyplot(fig)
-   plot(fig)
+   #plot(fig)
 
 with st.expander("Open for comments"):
    st.markdown('''The three plots on the top left show rectangle, triangle and sinc functions 
