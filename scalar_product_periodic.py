@@ -101,4 +101,4 @@ with st.expander("Open for comments"):
                ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots.''')
    st.markdown('''The scalar product is is shown in green. It is the center of gravity of the product signal:''')
-   st.latex('''<x(t),x(t)\ e^{-j\ 2\pi\ f\ t} = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
+   st.latex('''<x(t),x(t)\ e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
