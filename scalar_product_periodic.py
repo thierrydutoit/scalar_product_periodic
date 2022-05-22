@@ -59,7 +59,7 @@ with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
    #ax = axes(projection='3d')
    ax.plot3D(t, prod_real, prod_imag)
-   ax.plot3D(t, phasor_real, phasor_imag, 'gray','--')
+   ax.plot3D(t, phasor_real, phasor_imag, color='gray', linestyle='--')
    xlabel('Time [s])')   
    ylabel('Real part')   
    xlabel('Imag part')   
