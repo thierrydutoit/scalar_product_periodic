@@ -9,10 +9,10 @@ st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 1)
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)
 with col2:
-   dur=st.slider('Duration [s]',1, 20, 4)
-   f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
+   dur=st.slider('Duration [s]',1, 10, 4)
+   f=st.slider('Frequency of the phasor: f [Hz]', -5.0, 5.0, 1.0)
 with col1:
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
