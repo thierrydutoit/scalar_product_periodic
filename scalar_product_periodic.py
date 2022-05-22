@@ -57,9 +57,9 @@ time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag
 with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
    ax.plot3D(t, prod_real, prod_imag)
-   xlabel('Time [s])')   
-   ylabel('Real part')   
-   zlabel('Imag part')   
+   ax.set_xlabel('Time [s])', fontsize=20, rotation=150)
+   ax.set_ylabel('real')
+   ax.set_zlabel('imag', fontsize=30, rotation=60)
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
