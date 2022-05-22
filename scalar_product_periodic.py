@@ -57,6 +57,7 @@ time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag
 with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
    ax.plot3D(t, prod_real, prod_imag)
+   ax.plot3D(t, phasor_real, phasor_imag,'w--')
    ax.set_xlabel('Time [s])')
    ax.set_ylabel('real')
    ax.set_zlabel('imag')
