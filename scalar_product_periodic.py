@@ -78,7 +78,6 @@ with col1:
    ax.set_zlabel('imag')
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
-   convert_polar_xticks_to_radians(ax)
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
@@ -88,6 +87,7 @@ with col2:
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    ax.plot(time_stamp_arg,time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs,'o')
+   convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
