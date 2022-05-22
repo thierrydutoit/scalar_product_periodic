@@ -33,7 +33,7 @@ xlim(0-dur/2,dur/2);
 plot(t,signal)
 grid()
 title('$x(t)$')
-xlabel('Time (seconds)')   
+xlabel('Time [s])')   
 time_stamp=st.slider('Time stamp [s]', -dur/2.0, dur/2.0, 0.0)
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
@@ -46,10 +46,10 @@ with col1:
 #st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{-dur/2}^{dur/2} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 phasor_real=cos(-2*pi*t*f)
 phasor_imag=sin(-2*pi*t*f)
-prod_real=multiply(phasor_real,signal)/fe/dur
-scal_prod_real=sum(prod_real)
-prod_imag=multiply(phasor_imag,signal)/fe/dur
-scal_prod_imag=sum(prod_imag)
+prod_real=multiply(phasor_real,signal)
+scal_prod_real=sum(prod_real)/fe/dur
+prod_imag=multiply(phasor_imag,signal)
+scal_prod_imag=sum(prod_imag)/fe/dur
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
 time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
@@ -60,6 +60,9 @@ with col1:
    #ax = axes(projection='3d')
    ax.plot3D(t, phasor_real, phasor_imag, 'gray')
    ax.plot3D(t, prod_real, prod_imag, 'blue')
+   xlabel('Time [s])')   
+   ylabel('Real part')   
+   xlabel('Imag part')   
    st.pyplot(fig)
 
 with col2:
