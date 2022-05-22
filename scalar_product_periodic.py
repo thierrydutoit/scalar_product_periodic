@@ -28,6 +28,16 @@ def tri(x):
 def sincard(x):
     return divide(sin(pi*x),(pi*x))
 
+def convert_polar_xticks_to_radians(ax):
+    # Converts x-tick labels from degrees to radians
+    # Get the x-tick positions (returns in radians)
+    label_positions = ax.get_xticks()
+    # Convert to a list since we want to change the type of the elements
+    labels = list(label_positions)
+    # Format each label (edit this function however you'd like)
+    labels = [format_radians_label(label) for label in labels]
+    ax.set_xticklabels(labels)
+
 signal=cos(2*pi*f0*t)
 
 fig1,ax1 = subplots(figsize=(10,3))
@@ -62,11 +72,8 @@ with col1:
    ax.set_zlabel('imag')
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
+   convert_polar_xticks_to_radians(ax)
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
-   xT=xticks()[0]
-   xL=['0',r'$\frac{\pi}{4}$',r'$\frac{\pi}{2}$',r'$\frac{3\pi}{4}$',\
-        r'$\pi$',r'$\frac{5\pi}{4}$',r'$\frac{3\pi}{2}$',r'$\frac{7\pi}{4}$']
-   xticks(xT, xL)
    st.pyplot(fig)
 
 with col2:
