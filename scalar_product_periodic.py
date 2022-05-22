@@ -29,7 +29,6 @@ signal=cos(2*pi*f0*t)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
-#ylim(-10, 10)
 plot(t,signal)
 grid()
 title('$x(t)$')
@@ -57,7 +56,6 @@ time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag
 
 with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
-   #ax = axes(projection='3d')
    ax.plot3D(t, prod_real, prod_imag)
    xlabel('Time [s])')   
    ylabel('Real part')   
@@ -69,11 +67,10 @@ with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
-   xlabel('Time (seconds)') 
+   xlabel('Time [s]') 
    ax.plot(time_stamp_arg,time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs,'o')
    st.pyplot(fig)
-   #plot(fig)
 
 with st.expander("Open for comments"):
    st.markdown('''The three plots on the top left show rectangle, triangle and sinc functions 
