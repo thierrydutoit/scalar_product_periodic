@@ -12,7 +12,7 @@ with col1:
    f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)
 with col2:
    dur=st.slider('Duration [s]',1, 10, 4)
-   f=st.slider('Frequency of the phasor: f [Hz]', -5.0, 5.0, 1.0)
+   f=st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1.0)
 with col1:
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
@@ -93,21 +93,12 @@ with col2:
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
-   st.markdown('''The three plots on the top left show rectangle, triangle and sinc functions 
-               which can be modified using sliders _a_ and $\Delta$ . Notice that the integral 
-               of these functions is always 1, whatever _a_.''')
-   st.markdown('''When _a_ tends to infinity, these functions can no longer be plotted. 
-               They are therefore symbolically represented in the bottom plotas an arrow, the 
-               amplitude of which is set to the integral of the function: 1, and termed as 
-               a _dirac impluse_ $\delta(t)$, shown on the right.''')
-   st.markdown('''In the next four plots, we multiply our three functions with _f(t)=2cos(3t)_. 
-               Then we compute the integral of this product. The integral is the area in blue
-               (taken with signs). Multiplying the Dirac impulse by _2cos(3t)_ simply changes
-                the value of the impulse.''')
-   st.markdown('''When _a_ grows, we see that our three functions, although not fully identical, 
-               tend to have the same effect _when used in an integral_: only their values very 
-               close to their maximum contribute to the result. As a matter of fact, when
-               $\Delta$ is set to 0, all integrals tends to $f(0)$:''')
-   st.latex('''\int_{-\infty}^{\infty} f(t) \ \delta(t) \,dt=f(0)''')
-   st.markdown('''When $\Delta$ is modified, all integrals tend to $f(\Delta)$:''')
-   st.latex('''\int_{-\infty}^{\infty} f(t) \ \delta(t-\Delta) \,dt=f(\Delta)''')
+   st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable frequency $f_0$ and duration $D$.''')
+   st.markdown('''The two bottom plots show the product between this signal and a phasor with adjustable 
+               frequency $f$. The _time stamp_ slider shows a specific instant on all plots.
+               The bottom left plot shows the product in the complex plane as a function of time.
+               The bottom right plot shows a side view of the same product, in the complex plane.
+               ''')
+   st.markdown('''The scalar product is is shown in green. It is the center of gravity of the product signal:
+               ''')
+   st.latex('''<x(t),x(t)\ e^{-\j\ 2\pi\ f\ t} = 1/T_0 \int_{-\0}^{\T_0} x(t)\ \ e^{-\j\ 2\pi\ f\ t}\ dt''')
