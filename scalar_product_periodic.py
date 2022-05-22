@@ -78,6 +78,8 @@ with col1:
    ax.set_zlabel('imag')
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
+   ax.plot(time_stamp, time_stamp_real,time_stamp_imag,'o')
+   ax.plot([0,dur],[scal_prod_real,scal_prod_real],[scal_prod_imag,scal_prod_imag])
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
