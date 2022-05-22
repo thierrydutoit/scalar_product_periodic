@@ -5,7 +5,7 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-   st.title('Scalar Product: <sine,phasor>')
+st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
