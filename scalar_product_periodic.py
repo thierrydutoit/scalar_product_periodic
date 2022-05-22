@@ -28,13 +28,13 @@ def sincard(x):
 signal=cos(2*pi*f0*t)
 
 fig1,ax1 = subplots(figsize=(10,3))
-xlim(0-dur/2,dur/2); 
+xlim(0,dur); 
 #ylim(-10, 10)
 plot(t,signal)
 grid()
 title('$x(t)$')
 xlabel('Time [s])')   
-time_stamp=st.slider('Time stamp [s]', -dur/2.0, dur/2.0, 0.0)
+time_stamp=st.slider('Time stamp [s]', 0.0, dur, 0.0)
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
 
@@ -43,7 +43,7 @@ col1, col2 = st.columns(2)
 with col1:
    f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
 
-#st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{-dur/2}^{dur/2} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
+#st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{0}^{dur} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 phasor_real=cos(-2*pi*t*f)
 phasor_imag=sin(-2*pi*t*f)
 prod_real=multiply(phasor_real,signal)
@@ -61,7 +61,8 @@ with col1:
    ax.plot3D(t, prod_real, prod_imag)
    xlabel('Time [s])')   
    ylabel('Real part')   
-   xlabel('Imag part')   
+   zlabel('Imag part')   
+   title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
 with col2:
