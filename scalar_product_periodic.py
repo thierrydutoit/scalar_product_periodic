@@ -33,7 +33,7 @@ plot(t,signal)
 grid()
 title('$x(t)$')
 xlabel('Time [s])')   
-time_stamp=st.slider('Time stamp [s]', 0.0, dur, 0.0)
+time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
 
