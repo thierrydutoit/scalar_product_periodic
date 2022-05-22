@@ -11,7 +11,7 @@ col1, col2 = st.columns(2)
 with col1:
    f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)
 with col2:
-   dur=st.slider('Duration [s]',1, 10, 4)
+   dur=st.slider('Duration: D [s]',1, 10, 4)
    f=st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col1:
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
