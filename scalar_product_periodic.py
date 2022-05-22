@@ -12,6 +12,9 @@ with col1:
    f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 10, 1)
 with col2:
    dur=st.slider('Duration [s]',1, 20, 4)
+   f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
+with col1:
+   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
 t=arange(0,dur,1/fe) 
@@ -33,14 +36,8 @@ plot(t,signal)
 grid()
 title('$x(t)$')
 xlabel('Time [s])')   
-time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
-
-col1, col2 = st.columns(2)
-
-with col1:
-   f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
 
 #st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{0}^{dur} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 phasor_real=cos(-2*pi*t*f)
@@ -53,6 +50,8 @@ scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
 time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag))
+
+col1, col2 = st.columns(2)
 
 with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
