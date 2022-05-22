@@ -14,7 +14,7 @@ with col2:
    dur=st.slider('Duration [s]',1, 20, 4)
 
 fe=10000;
-t=arange(-dur/2,dur/2,1/fe) 
+t=arange(0,dur,1/fe) 
 
 def rect(x):
     return where(abs(x)<=0.5, 1, 0)
