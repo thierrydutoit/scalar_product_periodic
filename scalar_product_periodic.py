@@ -60,7 +60,7 @@ with col1:
    #ax = axes(projection='3d')
    ax.plot3D(t, phasor_real, phasor_imag, 'gray')
    ax.plot3D(t, prod_real, prod_imag, 'blue')
-   plot(fig)
+   st.pyplot(fig)
 
 with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
