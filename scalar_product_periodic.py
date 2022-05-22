@@ -95,10 +95,10 @@ with col2:
 with st.expander("Open for comments"):
    st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable frequency $f_0$ and duration $D$.''')
    st.markdown('''The two bottom plots show the product between this signal and a phasor with adjustable 
-               frequency $f$. The _time stamp_ slider shows a specific instant on all plots.
+               frequency $f$. 
                The bottom left plot shows the product in the complex plane as a function of time.
                The bottom right plot shows a side view of the same product, in the complex plane.
                ''')
-   st.markdown('''The scalar product is is shown in green. It is the center of gravity of the product signal:
-               ''')
+   st.markdown('''The _time stamp_ slider shows a specific instant on all plots.''')
+   st.markdown('''The scalar product is is shown in green. It is the center of gravity of the product signal:''')
    st.latex('''<x(t),x(t)\ e^{-\j\ 2\pi\ f\ t} = 1/T_0 \int_{-\0}^{\T_0} x(t)\ \ e^{-\j\ 2\pi\ f\ t}\ dt''')
