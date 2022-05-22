@@ -58,8 +58,7 @@ time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag
 with col1:
    fig = plt.figure()
    ax = plt.axes(projection='3d')
-   ax.plot3D(t, phasor_real, phh
-             asor_imag, 'gray')
+   ax.plot3D(t, phasor_real, phasor_imag, 'gray')
    ax.plot3D(t, prod_real, prod_imag, 'blue')
 
 with col2:
