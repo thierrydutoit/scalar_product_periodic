@@ -2,6 +2,7 @@ import streamlit as st
 from numpy import *
 from matplotlib.pyplot import *
 import matplotlib.patches as mpatches
+from mpl_toolkits import mplot3d
 import cmath as math
 
 st.title('Scalar Product: <sine,phasor>')
@@ -43,15 +44,23 @@ with col1:
    f=st.slider('Frequency of the phasor: f [Hz]', -10.0, 10.0, 1.0)
 
 #st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{-dur/2}^{dur/2} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
-
-prod_real=multiply(cos(-2*pi*t*f),signal)/fe/dur
+phasor_real=cos(-2*pi*t*f)
+phasor_imag=sin(-2*pi*t*f)
+prod_real=multiply(phasor_real,signal)/fe/dur
 scal_prod_real=sum(prod_real)
-prod_imag=multiply(sin(-2*pi*t*f),signal)/fe/dur
+prod_imag=multiply(phasor_imag,signal)/fe/dur
 scal_prod_imag=sum(prod_imag)
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
 time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag))
+
+with col1:
+   fig = plt.figure()
+   ax = plt.axes(projection='3d')
+   ax.plot3D(t, phasor_real, phh
+             asor_imag, 'gray')
+   ax.plot3D(t, prod_real, prod_imag, 'blue')
 
 with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
@@ -61,7 +70,7 @@ with col2:
    ax.plot(time_stamp_arg,time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs,'o')
    st.pyplot(fig)
-   
+   plot(fig)
 
 with st.expander("Open for comments"):
    st.markdown('''The three plots on the top left show rectangle, triangle and sinc functions 
