@@ -5,7 +5,7 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-st.title('Scalar Product: <sine,phasor>')
+   st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
@@ -63,13 +63,17 @@ with col1:
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
+   xT=xticks()[0]
+   xL=['0',r'$\frac{\pi}{4}$',r'$\frac{\pi}{2}$',r'$\frac{3\pi}{4}$',\
+        r'$\pi$',r'$\frac{5\pi}{4}$',r'$\frac{3\pi}{2}$',r'$\frac{7\pi}{4}$']
+   xticks(xT, xL)
    st.pyplot(fig)
 
 with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
-   x.plot(time_stamp_arg,time_stamp_abs,'o')
+   ax.plot(time_stamp_arg,time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs,'o')
    st.pyplot(fig)
 
