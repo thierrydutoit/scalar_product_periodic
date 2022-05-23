@@ -15,9 +15,9 @@ with col1:
    f0=st.slider('Frequency of the sine wave: f0 [Hz]', 1, 5, 1)*1.0
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
-   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
    N_periods=st.slider('Number of periods: N',1, 10, 4)
    dur=N_periods/f0
+   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
    
 fe=10000;
 t=arange(0,dur,1/fe) 
