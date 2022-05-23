@@ -47,9 +47,9 @@ option = st.selectbox(
 fe=10000;
 t=arange(0,dur,1/fe) 
 
-if option = 'Cosine" signal=cos(2*pi*f0*t)
+if option == 'Cosine" signal=cos(2*pi*f0*t)
    signal=square(t,f0)
-elif option = 'Square" signal=periodic_square(t,f0)
+elif option == 'Square" signal=periodic_square(t,f0)
 else signal=periodic_triangle(t,f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
