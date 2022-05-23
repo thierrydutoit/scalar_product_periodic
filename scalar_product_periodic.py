@@ -51,7 +51,7 @@ if option == 'Cosine' :
    signal=cos(2*pi*f0*t)
 elif option == 'Square' : 
     signal=periodic_square(t,f0)
-else signal=periodic_triangle(t,f0)
+else : signal=periodic_triangle(t,f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
