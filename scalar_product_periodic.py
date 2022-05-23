@@ -8,8 +8,8 @@ import cmath as math
 def periodic_square(t,f0):
     return where(abs((t%(1/f0))*f0)<=0.5, 1, -1)
 
-def periodic_triangle(t,f0):
-    return 1-abs((t%(1/f0))*f0)-1/2
+def periodic_sawtooth(t,f0):
+    return 2*(1-abs((t%(1/f0))*f0))-1
 
 def format_radians_label(float_in):
     # Converts a float value in radians into a
@@ -34,7 +34,7 @@ st.markdown('''Let us examine how the scalar product between a phasor of frequen
    
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 1, 5, 1)*1.0
+   f0=st.slider('Frequency of the periodic signal: f0 [Hz]', 1, 5, 1)*1.0
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
    N_periods=st.slider('Number of periods: N',1, 10, 4)
@@ -42,7 +42,7 @@ with col2:
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 option = st.selectbox(
-     'Choose a periodic signal', ('Cosine', 'Square', 'Triangle'))   
+     'Choose a periodic signal', ('Cosine', 'Square', 'Sawtooth'))   
 
 fe=10000;
 t=arange(0,dur,1/fe) 
@@ -51,7 +51,7 @@ if option == 'Cosine' :
    signal=cos(2*pi*f0*t)
 elif option == 'Square' : 
     signal=periodic_square(t,f0)
-else : signal=periodic_triangle(t,f0)
+else : signal=periodic_sawtooth(t,f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
