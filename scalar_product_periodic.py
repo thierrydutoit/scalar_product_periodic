@@ -29,8 +29,8 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('<periodic signal, phasor>')
 
-st.markdown('''Let us examine how the scalar product between a phasor $e^{-\ j\ 2\pi\ f\ t}$ with frequency _f_ 
-               and _N_ periods of a periodic signal _x(t)_ of frequency _f0_is obtained. ''')
+st.markdown('''Let us examine how the scalar product between a phasor $e^{-\j2\pi\f\t}$ with frequency _f_ 
+               and _N_ periods of a periodic signal _x(t)_ of frequency _f0_ is obtained. ''')
    
 col1, col2 = st.columns(2)
 with col1:
