@@ -5,14 +5,11 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-def square(t,f0):
+def periodic_square(t,f0):
     return where(abs((t%(1/f0))*f0)<=0.5, 1, -1)
 
-def tri(x):
-    return where(abs(x)<=1,1-abs(x),0)
-
-def sincard(x):
-    return divide(sin(pi*x),(pi*x))
+def periodic_triangle(t,f0):
+    return 1-abs((t%(1/f0))*f0)-1/2
 
 def format_radians_label(float_in):
     # Converts a float value in radians into a
@@ -43,13 +40,17 @@ with col2:
    N_periods=st.slider('Number of periods: N',1, 10, 4)
    dur=N_periods/f0
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
-   
+
+option = st.selectbox(
+     'Choose a periodic signal', ('Cosine', 'Square', 'Triangle'))   
+
 fe=10000;
 t=arange(0,dur,1/fe) 
 
-#signal=cos(2*pi*f0*t)
-signal=square(t,f0)
-
+if option = 'Cosine" signal=cos(2*pi*f0*t)
+   signal=square(t,f0)
+elif option = 'Square" signal=periodic_square(t,f0)
+else signal=periodic_triangle(t,f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
