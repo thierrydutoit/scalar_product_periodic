@@ -47,7 +47,7 @@ option = st.selectbox(
 fe=10000;
 t=arange(0,dur,1/fe) 
 
-if option == 'Cosine' 
+if option == 'Cosine' :
    signal=cos(2*pi*f0*t)
 elif option == 'Square' : 
     signal=periodic_square(t,f0)
