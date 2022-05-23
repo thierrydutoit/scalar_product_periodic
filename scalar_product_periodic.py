@@ -63,9 +63,12 @@ prod_imag=multiply(phasor_imag,signal)
 scal_prod_real=sum(prod_real)/fe
 scal_prod_imag=sum(prod_imag)/fe
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
-time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
-time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
-time_stamp_abs,time_stamp_arg=math.polar(complex(time_stamp_real,time_stamp_imag))
+prod_time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
+prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
+prod_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(prod_time_stamp_real,prod_time_stamp_imag))
+phasor_time_stamp_real=cos(-2*pi*time_stamp*f)
+pphasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
+phasor_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(phasor_time_stamp_real,phasor_time_stamp_imag))
 
 col1, col2 = st.columns(2)
 
@@ -78,8 +81,9 @@ with col1:
    ax.set_zlabel('imag')
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
-   ax.plot(time_stamp, time_stamp_real,time_stamp_imag,'o')
+   ax.plot(time_stamp, prod_time_stamp_real,prod_time_stamp_imag,'o')
    ax.plot([0,dur],[scal_prod_real/f0/dur,scal_prod_real/f0/dur],[scal_prod_imag/f0/dur,scal_prod_imag/f0/dur])
+   ax.plot(time_stamp,phasor_time_stamp_real,phasor_time_stamp_imag,'o')
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
@@ -87,9 +91,9 @@ with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
-   ax.plot(time_stamp_arg,time_stamp_abs,'o')
+   ax.plot(prod_time_stamp_arg,prod_time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs/f0/dur,'o')
-   ax.plot(scal_prod_arg,scal_prod_abs,'o')
+   ax.plot(phasor_time_stamp_arg,phasor_time_stamp_abs,'o')
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
@@ -99,13 +103,13 @@ with st.expander("Open for comments"):
                   frequency $f$. 
                   The bottom left plot shows the product signal in the complex plane as a function of time.
                   The bottom right plot shows a side view of the same product signal, in the complex plane.
+                  The circle with unity radius is the trace of the phasor. The shape in blue is the trace of 
+                  the product signal.
                ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots.''')
    st.markdown('''The scalar product, computed on ONE period only, is is shown in green. 
                   It is the center of gravity of the product signal:''')
    st.latex('''<x(t),e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
    st.markdown('''When computed on the number _N_ of periods shown on the top plot, the scalar product is 
-                  multiplied by _N_, as shown in 
-                  When computed on the infinite number of periods of the whole periodic signal, the scalar
-                  product tends obviously tends to infinity.
+                  multiplied by _N_. This is NOT shown on th plot.
                   ''')
