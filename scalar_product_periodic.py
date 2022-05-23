@@ -59,7 +59,7 @@ st.pyplot(fig1)
 phasor_real=cos(-2*pi*t*f)
 phasor_imag=sin(-2*pi*t*f)
 prod_real=multiply(phasor_real,signal)
-scal_prod_real=sum(prod_real)/fe/dur
+scal_prod_real=sum(prod_real)
 prod_imag=multiply(phasor_imag,signal)
 scal_prod_imag=sum(prod_imag)
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
