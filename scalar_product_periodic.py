@@ -11,7 +11,8 @@ col1, col2 = st.columns(2)
 with col1:
    f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)
 with col2:
-   dur=st.slider('Duration: D [s]',1, 10, 4)
+   N_periods=st.slider('Number of periods: N',1, 10, 4)
+   dur=N_periods/f0
    f=st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col1:
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
@@ -55,7 +56,6 @@ xlabel('Time [s])')
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
 
-#st.latex('<x(t)\ ,\ e^{\ j\ 2\pi\ f\ t}>=1/{dur}\int_{0}^{dur} x(t) \ e^{\ -j\ 2\pi\ f\ t \ dt}')
 phasor_real=cos(-2*pi*t*f)
 phasor_imag=sin(-2*pi*t*f)
 prod_real=multiply(phasor_real,signal)
@@ -82,8 +82,7 @@ with col1:
    ax.set_ylim(-1,1)
    ax.set_zlim(-1,1)
    ax.plot(time_stamp, prod_time_stamp_real,prod_time_stamp_imag,'o')
-   ax.plot([0,dur],[scal_prod_real/f0/dur,scal_prod_real/f0/dur],[scal_prod_imag/f0/dur,scal_prod_imag/f0/dur])
-   ax.plot(time_stamp,phasor_time_stamp_real,phasor_time_stamp_imag,'o')
+   ax.plot([0,dur],[scal_prod_real//N_periods,scal_prod_real/N_periods],[scal_prod_imag//N_periods,scal_prod_imag//N_periods])
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    st.pyplot(fig)
 
@@ -91,9 +90,8 @@ with col2:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': 'polar'})
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
-   ax.plot(prod_time_stamp_arg,prod_time_stamp_abs,'o')
+   ax.plot([prod_time_stamp_arg, phasor_time_stamp_arg], [prod_time_stamp_abs, phasor_time_stamp_abs],'o')
    ax.plot(scal_prod_arg,scal_prod_abs/f0/dur,'o')
-   ax.plot(phasor_time_stamp_arg,phasor_time_stamp_abs,'o')
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
@@ -106,10 +104,10 @@ with st.expander("Open for comments"):
                   The circle with unity radius is the trace of the phasor. The shape in blue is the trace of 
                   the product signal.
                ''')
-   st.markdown('''The _time stamp_ slider shows a specific instant on all plots.''')
+   st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
    st.markdown('''The scalar product, computed on ONE period only, is is shown in green. 
                   It is the center of gravity of the product signal:''')
    st.latex('''<x(t),e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
    st.markdown('''When computed on the number _N_ of periods shown on the top plot, the scalar product is 
-                  multiplied by _N_. This is NOT shown on th plot.
+                  multiplied by _N_. This is NOT shown on the plot.
                   ''')
