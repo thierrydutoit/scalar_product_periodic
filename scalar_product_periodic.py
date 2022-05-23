@@ -9,7 +9,7 @@ st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)*1.0
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 1, 5, 1)*1.0
 with col2:
    N_periods=st.slider('Number of periods: N',1, 10, 4)
    dur=N_periods/f0
