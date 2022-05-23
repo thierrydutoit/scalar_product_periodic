@@ -9,7 +9,7 @@ st.title('Scalar Product: <sine,phasor>')
 
 col1, col2 = st.columns(2)
 with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 0, 5, 1)*1.0
 with col2:
    N_periods=st.slider('Number of periods: N',1, 10, 4)
    dur=N_periods/f0
@@ -91,7 +91,7 @@ with col2:
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    ax.plot([prod_time_stamp_arg, phasor_time_stamp_arg], [prod_time_stamp_abs, phasor_time_stamp_abs],'o')
-   ax.plot(scal_prod_arg,scal_prod_abs/f0/dur,'o')
+   ax.plot(scal_prod_arg,scal_prod_abs/N_periods,'o')
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
