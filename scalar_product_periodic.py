@@ -5,8 +5,8 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-def rect(x):
-    return where(abs(x)<=0.5, 1, 0)
+def rect(t,f0):
+    return where(abs((t*f0)%(1/f0))<=0.5, 1, 0)
 
 def tri(x):
     return where(abs(x)<=1,1-abs(x),0)
