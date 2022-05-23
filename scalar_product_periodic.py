@@ -91,7 +91,7 @@ with col2:
    ax.plot(-2*pi*t*f+(signal<0)*pi,abs(signal))
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    ax.plot([prod_time_stamp_arg, phasor_time_stamp_arg], [prod_time_stamp_abs, phasor_time_stamp_abs],'o')
-   ax.plot(scal_prod_arg,scal_prod_abs/N_periods,'o')
+   ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
