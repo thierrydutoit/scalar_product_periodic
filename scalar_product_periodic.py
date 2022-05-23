@@ -27,7 +27,7 @@ def convert_polar_xticks_to_radians(ax):
     labels = [format_radians_label(label) for label in labels]
     ax.set_xticklabels(labels)
 
-st.title('Scalar Product: <periodic signal,phasor>')
+st.title('<periodic signal, phasor>')
 
 st.markdown('''Let us examine how the scalar product between a phasor of frequency _f_ 
                and _N_ periods of a periodic signal _x(t)_ is obtained. ''')
