@@ -5,23 +5,6 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-st.title('Scalar Product: <sine,phasor>')
-
-st.markdown('''Let us examine how the scalar product between a phasor of frequency _f_ 
-               and _N_ periods of a periodic signal _x(t)_ is obtained. ''')
-   
-col1, col2 = st.columns(2)
-with col1:
-   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 1, 5, 1)*1.0
-   f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
-with col2:
-   N_periods=st.slider('Number of periods: N',1, 10, 4)
-   dur=N_periods/f0
-   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
-   
-fe=10000;
-t=arange(0,dur,1/fe) 
-
 def rect(x):
     return where(abs(x)<=0.5, 1, 0)
 
@@ -46,6 +29,23 @@ def convert_polar_xticks_to_radians(ax):
     # Format each label (edit this function however you'd like)
     labels = [format_radians_label(label) for label in labels]
     ax.set_xticklabels(labels)
+
+st.title('Scalar Product: <sine,phasor>')
+
+st.markdown('''Let us examine how the scalar product between a phasor of frequency _f_ 
+               and _N_ periods of a periodic signal _x(t)_ is obtained. ''')
+   
+col1, col2 = st.columns(2)
+with col1:
+   f0=st.slider('Frequency of the sine wave: f0 [Hz]', 1, 5, 1)*1.0
+   f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
+with col2:
+   N_periods=st.slider('Number of periods: N',1, 10, 4)
+   dur=N_periods/f0
+   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
+   
+fe=10000;
+t=arange(0,dur,1/fe) 
 
 signal=cos(2*pi*f0*t)
 
