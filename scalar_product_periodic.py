@@ -6,7 +6,7 @@ from mpl_toolkits import mplot3d
 import cmath as math
 
 def square(t,f0):
-    return where(abs(t%(1/f0))<=0.5, 1, -1)
+    return where(abs((t%(1/f0))/f0)<=0.5, 1, -1)
 
 def tri(x):
     return where(abs(x)<=1,1-abs(x),0)
