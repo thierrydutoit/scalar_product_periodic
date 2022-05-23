@@ -67,8 +67,8 @@ prod_time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 prod_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(prod_time_stamp_real,prod_time_stamp_imag))
 phasor_time_stamp_real=cos(-2*pi*time_stamp*f)
-pphasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
-phasor_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(phasor_time_stamp_real,phasor_time_stamp_imag))
+phasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
+phasor_time_stamp_abs,phasor_time_stamp_arg=math.polar(complex(phasor_time_stamp_real,phasor_time_stamp_imag))
 
 col1, col2 = st.columns(2)
 
