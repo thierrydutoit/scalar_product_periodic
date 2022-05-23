@@ -5,8 +5,8 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-def rect(t,f0):
-    return where(abs((t*f0)%(1/f0))<=0.5, 1, 0)
+def square(t,f0):
+    return where(abs(t%(1/f0))<=0.5, 1, -1)
 
 def tri(x):
     return where(abs(x)<=1,1-abs(x),0)
@@ -48,7 +48,7 @@ fe=10000;
 t=arange(0,dur,1/fe) 
 
 #signal=cos(2*pi*f0*t)
-signal=rect(t,f0)
+signal=square(t,f0)
 
 
 fig1,ax1 = subplots(figsize=(10,3))
