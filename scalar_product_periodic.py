@@ -107,7 +107,7 @@ with col2:
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
-   st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable frequency $f_0$ and duration $D$.''')
+   st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable frequency $f_0$.''')
    st.markdown('''The two bottom plots show the product between this signal and a phasor with adjustable 
                   frequency $f$. 
                   The bottom left plot shows the product signal in the complex plane as a function of time.
@@ -116,9 +116,9 @@ with st.expander("Open for comments"):
                   the product signal.
                ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
-   st.markdown('''The scalar product, computed on ONE period only, is is shown in green. 
+   st.markdown('''The scalar product, computed on ONE period only, is shown in green. 
                   It is the center of gravity of the product signal:''')
    st.latex('''<x(t),e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
-   st.markdown('''When computed on the number _N_ of periods shown on the top plot, the scalar product is 
+   st.markdown('''Notice that, when computed on a number _N_ of periods greater than 1, the scalar product is 
                   multiplied by _N_. This is NOT shown on the plot.
                   ''')
