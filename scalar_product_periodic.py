@@ -27,10 +27,15 @@ def convert_polar_xticks_to_radians(ax):
     labels = [format_radians_label(label) for label in labels]
     ax.set_xticklabels(labels)
 
-st.title('<periodic signal, phasor>')
+st.title('Measuring frequency content')
 
+st.markdown('''Suppose you are given a black box with some unknown signal $x(t)$ in it, and the only 
+               thing you can do is to provide another signal $in(t)$ as input, in which case the black 
+               box will ouput the scalar product between the two: $<x(t),in(t)>$. ''')
+st.markdown('''What kind of input signal should you use to get the amplitude and phase of the frequency 
+               component of $x(t)$ at frequency $f$? ''')
 st.markdown('''Let us examine how the scalar product between a phasor $e^{-j2\pi ft}$ with frequency _f_ 
-               and _N_ periods of a periodic signal _x(t)_ of frequency _f0_ is obtained. ''')
+               and _1_ period of a periodic signal _x(t)_ of frequency _f0_ provides the solution. ''')
    
 col1, col2 = st.columns(2)
 with col1:
