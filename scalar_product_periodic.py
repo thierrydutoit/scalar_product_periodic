@@ -34,8 +34,6 @@ st.markdown('''Suppose you are given a black box with some unknown signal $x(t)$
                box will ouput the scalar product between the two: $<x(t),in(t)>$. ''')
 st.markdown('''What kind of input signal should you use to get the amplitude and phase of the frequency 
                component of $x(t)$ at frequency $f$? ''')
-st.markdown('''Let us examine how the scalar product between a phasor $e^{-j2\pi ft}$ with frequency _f_ 
-               and _1_ period of a periodic signal _x(t)_ of frequency _f0_ provides the solution. ''')
    
 col1, col2 = st.columns(2)
 with col1:
@@ -122,3 +120,6 @@ with st.expander("Open for comments"):
    st.markdown('''Notice that, when computed on a number _N_ of periods greater than 1, the scalar product is 
                   multiplied by _N_. This is NOT shown on the plot.
                   ''')
+   st.markdown('''As we can see, the scalar product between a phasor $e^{-j2\pi ft}$ with frequency _f_ 
+                  and _1_ period of a periodic signal _x(t)_ of frequency _f0_ provides the solution to our 
+                  problem. ''')
