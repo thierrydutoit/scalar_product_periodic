@@ -5,12 +5,6 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
-def periodic_square(t,f0):
-    return where(abs((t%(1/f0))*f0)<=0.5, 1, -1)
-
-def periodic_sawtooth(t,f0):
-    return 2*(1-abs((t%(1/f0))*f0))-1
-
 def format_radians_label(float_in):
     # Converts a float value in radians into a
     # string representation of that float
@@ -29,33 +23,26 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('Measuring frequency content')
 
-st.markdown('''Suppose you are given a black box with some unknown periodic signal $x_T_0(t)$ in it, 
-               whose fundamental frequency $f_0_=1/T_0$ is unknown, and the only thing you can do is
-               to provide another signal $in(t)$ as input, in which case the black box will output 
-               the inner product between the two: $<x_T_0(t),in(t)>$. ''')
+st.markdown('''Suppose you are given a black box with some cosine signal $x(t)=a\cos (\2\pi f_0_t+\phi)$, 
+               whose amplitude a, fundamental frequency $f_0_=1/T_0$ and initial phase $\phi$ are unknown.
+               Suppose the only thing you can do is to provide another signal $in(t)$ as input, in which
+               case the black box will output the inner product between the two: $<x(t),in(t)>$. ''')
 st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
-               and phase of the fundamental frequency component of $x_T_0(t)$? ''')
+               and phase of the fundamental frequency component of $x(t)$? ''')
    
 col1, col2 = st.columns(2)
 with col1:
    f0=st.slider('Frequency of the periodic signal: f0 [Hz]', 1, 5, 1)*1.0
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
-   N_periods=st.slider('Number of periods: N',1, 10, 4)
-   dur=N_periods/f0
-   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
+   phi=st.slider('Initial phase: phi',-pi,pi,0)
 
-option = st.selectbox(
-     'Choose a periodic signal', ('Cosine', 'Square', 'Sawtooth'))   
-
+N_periods=3;
+dur=N_periods/f0
+time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 fe=10000;
 t=arange(0,dur,1/fe) 
-
-if option == 'Cosine' :
-   signal=cos(2*pi*f0*t)
-elif option == 'Square' : 
-    signal=periodic_square(t,f0)
-else : signal=periodic_sawtooth(t,f0)
+signal=cos(2*pi*f0*t+phi)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
@@ -115,7 +102,9 @@ with st.expander("Open for comments"):
                   the product signal. ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
    st.markdown('''The inner product is shown in green. It is the center of gravity of the product signal:''')
-   st.latex('''<x(t),e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
-   st.markdown('''As we can see, the inner product between a phasor $e^{-j2\pi ft}$ with frequency _f0_ 
+   st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
+   st.markdown('''As we can see, the inner product between a phasor $e^{j2\pi ft}$ with frequency _f0_ or _-f0_ 
                   and periodic signal of frequency _f0_ provides the solution to our 
-                  problem. ''')
+                  problem. As a matter of fact, we know that:''')
+   st.latex('''a\cos (\2\pi f_0_t+\phi),e^{j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
+  
