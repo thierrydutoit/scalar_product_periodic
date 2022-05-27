@@ -23,8 +23,8 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('Measuring frequency content')
 
-st.markdown('''Suppose you are given a black box with some cosine signal $x(t)=a\cos (\2\pi f_0_t+\phi)$, 
-               whose amplitude a, fundamental frequency $f_0_=1/T_0$ and initial phase $\phi$ are unknown.
+st.markdown('''Suppose you are given a black box with some cosine signal $x(t)=a\cos(2\pi f_0_t+\phi)$, 
+               whose amplitude a, fundamental frequency $f_0_=1/T_0_$ and initial phase $\phi$ are unknown.
                Suppose the only thing you can do is to provide another signal $in(t)$ as input, in which
                case the black box will output the inner product between the two: $<x(t),in(t)>$. ''')
 st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
@@ -36,7 +36,7 @@ with col1:
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
    phi=st.slider('Initial phase: phi',-pi,pi,0.0)
-   N_periods=3;
+   N_periods=2;
    dur=N_periods/f0
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
