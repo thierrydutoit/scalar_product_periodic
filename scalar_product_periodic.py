@@ -33,12 +33,13 @@ st.markdown('''What kind of periodic signal should you use as input to get the f
 col1, col2 = st.columns(2)
 with col1:
    f0=st.slider('Frequency of the periodic signal: f0 [Hz]', 1, 5, 1)*1.0
-   f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
    phi=st.slider('Initial phase: phi',-pi,pi,0.0)
    N_periods=2;
    dur=N_periods/f0
-   time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
+
+f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
+time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
 t=arange(0,dur,1/fe) 
