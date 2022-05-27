@@ -105,6 +105,4 @@ with st.expander("Open for comments"):
    st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
    st.markdown('''As we can see, the inner product between a phasor $e^{j2\pi ft}$ with frequency _f0_ or _-f0_ 
                   and periodic signal of frequency _f0_ provides the solution to our 
-                  problem. As a matter of fact, we know that:''')
-   st.latex('''a\cos (\2\pi f_0_t+\phi),e^{j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
-  
+                  problem. ''') 
