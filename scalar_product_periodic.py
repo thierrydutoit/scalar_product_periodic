@@ -29,11 +29,12 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('Measuring frequency content')
 
-st.markdown('''Suppose you are given a black box with some unknown signal $x(t)$ in it, and the only 
-               thing you can do is to provide another signal $in(t)$ as input, in which case the black 
-               box will ouput the scalar product between the two: $<x(t),in(t)>$. ''')
-st.markdown('''What kind of input signal should you use to get the amplitude and phase of the frequency 
-               component of $x(t)$ at frequency $f$? ''')
+st.markdown('''Suppose you are given a black box with some unknown periodic signal $x_T_0(t)$ in it, 
+               whose fundamental frequency $f_0_=1/T_0$ is unknown, and the only thing you can do is
+               to provide another signal $in(t)$ as input, in which case the black box will output 
+               the inner product between the two: $<x_T_0(t),in(t)>$. ''')
+st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
+               and phase of the fundamental frequency component of $x_T_0(t)$? ''')
    
 col1, col2 = st.columns(2)
 with col1:
@@ -111,15 +112,10 @@ with st.expander("Open for comments"):
                   The bottom left plot shows the product signal in the complex plane as a function of time.
                   The bottom right plot shows a side view of the same product signal, in the complex plane.
                   The circle with unity radius is the trace of the phasor. The shape in blue is the trace of 
-                  the product signal.
-               ''')
+                  the product signal. ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
-   st.markdown('''The scalar product, computed on ONE period only, is shown in green. 
-                  It is the center of gravity of the product signal:''')
+   st.markdown('''The inner product is shown in green. It is the center of gravity of the product signal:''')
    st.latex('''<x(t),e^{-j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
-   st.markdown('''Notice that, when computed on a number _N_ of periods greater than 1, the scalar product is 
-                  multiplied by _N_. This is NOT shown on the plot.
-                  ''')
-   st.markdown('''As we can see, the scalar product between a phasor $e^{-j2\pi ft}$ with frequency _f_ 
-                  and _1_ period of a periodic signal _x(t)_ of frequency _f0_ provides the solution to our 
+   st.markdown('''As we can see, the inner product between a phasor $e^{-j2\pi ft}$ with frequency _f0_ 
+                  and periodic signal of frequency _f0_ provides the solution to our 
                   problem. ''')
