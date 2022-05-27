@@ -35,7 +35,7 @@ with col1:
    f0=st.slider('Frequency of the periodic signal: f0 [Hz]', 1, 5, 1)*1.0
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
-   phi=st.slider('Initial phase: phi',-pi,pi,0)
+   phi=st.slider('Initial phase: phi',-pi,pi,0.0)
 
 N_periods=3;
 dur=N_periods/f0
