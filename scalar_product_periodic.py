@@ -36,10 +36,10 @@ with col1:
    f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 with col2:
    phi=st.slider('Initial phase: phi',-pi,pi,0.0)
+   N_periods=3;
+   dur=N_periods/f0
    time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
-N_periods=3;
-dur=N_periods/f0
 fe=10000;
 t=arange(0,dur,1/fe) 
 signal=cos(2*pi*f0*t+phi)
