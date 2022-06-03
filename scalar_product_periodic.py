@@ -50,7 +50,7 @@ fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
 plot(t,signal)
 grid()
-title('2 seconds of x(t)=a\cos(2\pi f_{0}t+\phi)$x(t)')
+title('2 seconds of $x(t)=a\cos(2\pi f_{0}t+\phi)$')
 xlabel('Time [s])')   
 ax1.set_ylim(-2,2)
 ax1.plot(time_stamp,a*cos(2*pi*f0*time_stamp+phi),'o')
@@ -116,4 +116,7 @@ with st.expander("Open for comments"):
                   else than the inner product:''')
    st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\dfrac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
    st.markdown('''computed on, and normalzed by, one period _T0_ of the cosine.''')
-  
+   st.markdown('''Notice, finally, that the only two non-zero inner products give us exactly the composition of our 
+                  cosine in terms of phasors:''')
+   st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\dfrac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
+   
