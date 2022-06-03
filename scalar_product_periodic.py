@@ -101,8 +101,8 @@ with st.expander("Open for comments"):
                   and phase _phi_. \\
                   The two bottom plots show the product between this signal and a phasor with adjustable 
                   frequency $f$. \\
-                  *** The bottom left plot shows the product signal in the complex plane as a function of time. \\
-                  *** The bottom right plot shows a side view of the same product signal, in the complex plane.
+                  * The bottom left plot shows the product signal in the complex plane as a function of time. \\
+                  * The bottom right plot shows a side view of the same product signal, in the complex plane.
                   The circle with unity radius is the trace of the phasor. \\
                   The _time stamp_ slider shows a specific instant on all plots, in orange.''')
    st.markdown('''If we assume that the curve has a uniform weight, its center of gravity (CG) is shown in green. 
