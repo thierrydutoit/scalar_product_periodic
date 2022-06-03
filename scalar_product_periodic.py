@@ -50,7 +50,7 @@ fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
 plot(t,signal)
 grid()
-title('$x(t)$')
+title('$2 seconds of x(t)$')
 xlabel('Time [s])')   
 ax1.set_ylim(-2,2)
 ax1.plot(time_stamp,a*cos(2*pi*f0*time_stamp+phi),'o')
