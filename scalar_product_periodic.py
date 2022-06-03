@@ -32,7 +32,7 @@ st.markdown('''What kind of periodic signal should you use as input to get the f
    
 col1, col2, col3 = st.columns(3)
 with col1:
-   a=st.slider('Amplitude of the cosine: a ', 1, 5, 1)*1.0
+   a=st.slider('Amplitude of the cosine: a ', 0.5, 2, 1.0)
 with col2:
    f0=st.slider('Frequency: f0 [Hz]', 1, 5, 1)*1.0
 with col3:
