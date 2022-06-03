@@ -108,7 +108,7 @@ with st.expander("Open for comments"):
    st.markdown('''If we assume that the curve has a uniform weight, its center of gravity (CG) is shown in green. 
                   It is intuivively the place where to support the curve so as to maintain its balance.   ''')
    st.markdown('''As we can see, the position of the CG of the product between a phasor $e^{j2\pi ft}$ 
-                  and our cosine of frequency _f0_ is non-zero only when _f=f0_ or _f=-f0_. Its modulus and
+                  and our cosine of frequency _f0_ is non-zero only when _f=f0_ (or _f=-f0_). Its modulus and
                   argument provide the solution to our problem: the amplitude of the cosine is twice the modulus 
                   of the CG  and the phase of the cosine is the argument of the CG. ''') 
    st.markdown('''If we now assume that each element $dt$ of the product curve has a mass $dt$ - so that the total 
