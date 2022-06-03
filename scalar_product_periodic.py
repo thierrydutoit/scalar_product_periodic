@@ -118,6 +118,6 @@ with st.expander("Open for comments"):
    st.markdown('''computed on, and normalzed by, one period _T0_ of the cosine.''')
    st.markdown('''Notice, finally, that the only two non-zero inner products give us exactly the composition of our 
                   cosine in terms of phasors:''')
-   st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pi ft}>e^{j2\pi ft} + <x(t),e^{-j2\pi ft}>\ e^{-j2\pi ft} \\
-               =\dfrac{1}{2} e^{j\phi} e^{j2\pi ft} + \dfrac{1}{2} e^{-j\phi} e^{-j2\pi ft}''')
+   st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pi f_0t}>e^{j2\pi f_0 t} + <x(t),e^{-j2\pi f_0 t}>\ e^{-j2\pi f_0 t}''')
+   st.latex('''a\cos(2\pi f_{0}t+\phi)=\dfrac{a}{2} e^{j\phi} e^{j2\pi f_0 t} + \dfrac{a}{2} e^{-j\phi} e^{-j2\pi f_0 t}''')
    
