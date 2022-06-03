@@ -53,7 +53,7 @@ grid()
 title('$x(t)$')
 xlabel('Time [s])')   
 ax1.set_ylim(-2,2)
-ax1.plot(time_stamp,cos(2*pi*f0*time_stamp+phi),'o')
+ax1.plot(time_stamp,a*cos(2*pi*f0*time_stamp+phi),'o')
 st.pyplot(fig1)
 
 phasor_real=cos(-2*pi*t*f)
