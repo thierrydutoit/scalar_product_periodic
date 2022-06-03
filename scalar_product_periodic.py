@@ -111,8 +111,7 @@ with st.expander("Open for comments"):
                   mass of one period of this curve is precisely $T_0$ - then the center of gravity is nothing 
                   else than the inner product:''')
    st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\dfrac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
-   st.markdown('''As we can see, the inner product between a phasor $e^{j2\pi ft}$ with frequency _f0_ or _-f0_ 
-                  and periodic signal of frequency _f0_ is the only non-zero product. Its amplitude and 
-                  argument provide the solution to our problem: the amplitude of the cosine is twice that of the 
-                  inner product and the phase of the cosine is the argument of the inner product with the _f0_ 
-                  phasor. ''') 
+   st.markdown('''As we can see, the inner product between a phasor $e^{j2\pi ft}$ and our cosine of frequency 
+                  _f0_ is non-zero only when _f=f0_ or _f=-f0_. Its amplitude and argument provide the solution
+                  to our problem: the amplitude of the cosine is twice that of the inner product and the phase 
+                  of the cosine is the argument of the inner product with the _f0_ phasor. ''') 
