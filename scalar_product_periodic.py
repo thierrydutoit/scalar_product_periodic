@@ -118,5 +118,6 @@ with st.expander("Open for comments"):
    st.markdown('''computed on, and normalzed by, one period _T0_ of the cosine.''')
    st.markdown('''Notice, finally, that the only two non-zero inner products give us exactly the composition of our 
                   cosine in terms of phasors:''')
-   st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\dfrac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
+   st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pift}>\ e^{j2\pift} + <x(t),e^{-j2\pift}>\ e^{-j2\pift} 
+               =\dfrac{1}{2} e^{j\phi) e^{j2\pift} + \dfrac{1}{2} e^{-j\phi) e^{-j2\pift}''')
    
