@@ -111,8 +111,9 @@ with st.expander("Open for comments"):
                   and our cosine of frequency _f0_ is non-zero only when _f=f0_ (or _f=-f0_). Its modulus and
                   argument provide the solution to our problem: the amplitude of the cosine is twice the modulus 
                   of the CG  and the phase of the cosine is the argument of the CG. ''') 
-   st.markdown('''If we now assume that each element $dt$ of the product curve has a mass $dt$ - so that the total 
+   st.markdown('''If we now assume that each segment of duration $dt$ of the product curve has a mass $dt$ - so that the total 
                   mass of one period of this curve is precisely $T_0$ - then this center of gravity is nothing 
                   else than the inner product:''')
    st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\dfrac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
+   st.markdown('''computed on, and normalzed by, one period _T0_ of the cosine.''')
   
