@@ -91,6 +91,7 @@ with col2:
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    ax.plot(prod_time_stamp_arg, prod_time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
+   ax.set_ylim(0,1)
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
