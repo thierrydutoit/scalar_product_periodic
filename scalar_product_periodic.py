@@ -105,8 +105,11 @@ with st.expander("Open for comments"):
                   The circle with unity radius is the trace of the phasor. The shape in blue is the trace of 
                   the product signal. ''')
    st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
-   st.markdown('''The inner product is shown in green. It is the center of gravity of the product signal:''')
-   st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> = 1/T_0 \int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt''')
+   st.markdown('''The inner product is shown in green. ''')
+   st.markdown('''If we assume that each element $dt$ of the product curve has a mass $dt$ - so that the total 
+                  mass of one period of this curve is $T_0$ is precisely $T_0$ - then the inner product is also
+                  the center of gravity of the product signal:''')
+   st.latex('''<x(t),e^{j\ 2\pi\ f\ t}> =\frac{\int_{0}^{T_0} x(t)\ \ e^{-j\ 2\pi\ f\ t}\ dt}{T_0}''')
    st.markdown('''As we can see, the inner product between a phasor $e^{j2\pi ft}$ with frequency _f0_ or _-f0_ 
                   and periodic signal of frequency _f0_ provides the solution to our 
                   problem. ''') 
