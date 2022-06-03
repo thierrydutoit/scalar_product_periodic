@@ -30,20 +30,21 @@ st.markdown('''Suppose you are given a black box with some cosine signal $x(t)=a
 st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
                and phase of the fundamental frequency component of $x(t)$? ''')
    
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 with col1:
-   f0=st.slider('Frequency of the periodic signal: f0 [Hz]', 1, 5, 1)*1.0
+   a=st.slider('Amplitude of the cosine: a ', 1, 5, 1)*1.0
 with col2:
+   f0=st.slider('Frequency: f0 [Hz]', 1, 5, 1)*1.0
+with col3:
    phi=st.slider('Initial phase: phi',-pi,pi,0.0)
-   N_periods=2;
-   dur=N_periods/f0
+   dur=2.0
 
 f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
 t=arange(0,dur,1/fe) 
-signal=cos(2*pi*f0*t+phi)
+signal=a*cos(2*pi*f0*t+phi)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
@@ -61,8 +62,8 @@ prod_imag=multiply(phasor_imag,signal)
 scal_prod_real=sum(prod_real)/fe
 scal_prod_imag=sum(prod_imag)/fe
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
-prod_time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp+phi)
-prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp+phi)
+prod_time_stamp_real=cos(-2*pi*time_stamp*f)*a*cos(2*pi*f0*time_stamp+phi)
+prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*a*cos(2*pi*f0*time_stamp+phi)
 prod_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(prod_time_stamp_real,prod_time_stamp_imag))
 phasor_time_stamp_real=cos(-2*pi*time_stamp*f)
 phasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
