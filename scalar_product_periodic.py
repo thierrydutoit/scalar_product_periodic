@@ -52,6 +52,7 @@ plot(t,signal)
 grid()
 title('$x(t)$')
 xlabel('Time [s])')   
+ax.set_ylim(-2,2)
 ax1.plot(time_stamp,cos(2*pi*f0*time_stamp+phi),'o')
 st.pyplot(fig1)
 
