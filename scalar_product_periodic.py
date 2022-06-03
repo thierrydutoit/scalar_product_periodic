@@ -115,9 +115,9 @@ with st.expander("Open for comments"):
                   mass of one period of this curve is precisely $T_0$ - then this center of gravity is nothing 
                   else than the inner product:''')
    st.latex('''<x(t),e^{j 2\pi f_0 t}> =\dfrac{\int_{0}^{T_0} x(t)\ e^{-j2\pi f_0 t}\ dt}{T_0}''')
-   st.markdown('''computed on, and normalzed by, one period _T0_ of the cosine.''')
+   st.markdown('''computed on, and normalized by, one period _T0_ of the cosine.''')
    st.markdown('''Notice, finally, that the only two non-zero inner products give us exactly the composition of our 
                   cosine in terms of phasors:''')
    st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pi f_0t}>e^{j2\pi f_0 t} + <x(t),e^{-j2\pi f_0 t}>\ e^{-j2\pi f_0 t}''')
-   st.latex('''a\cos(2\pi f_{0}t+\phi)=\dfrac{a}{2} e^{j\phi} e^{j2\pi f_0 t} + \dfrac{a}{2} e^{-j\phi} e^{-j2\pi f_0 t}''')
+   st.latex('''=\dfrac{a}{2} e^{j\phi} e^{j2\pi f_0 t} + \dfrac{a}{2} e^{-j\phi} e^{-j2\pi f_0 t}''')
    
