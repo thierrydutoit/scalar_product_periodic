@@ -97,10 +97,11 @@ with col2:
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
-   st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable frequency $f_0$. \\
+   st.markdown('''The first plot shows a periodic signal $x(t)$ with adjustable amplitude, frequency $f_0$ 
+                  and phase _phi_. \\
                   The two bottom plots show the product between this signal and a phasor with adjustable 
-                  frequency $f$. 
-                  The bottom left plot shows the product signal in the complex plane as a function of time.
+                  frequency $f$. \\
+                  The bottom left plot shows the product signal in the complex plane as a function of time. \\
                   The bottom right plot shows a side view of the same product signal, in the complex plane.
                   The circle with unity radius is the trace of the phasor. The shape in blue is the trace of 
                   the product signal. \\
