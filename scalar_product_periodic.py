@@ -23,12 +23,12 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('Measuring frequency content')
 
-st.markdown('''Suppose you are given a black box with some cosine signal $x(t)=a\cos(2\pi f_{0}t+\phi)$, 
+st.markdown('''Suppose you are given a black box containing some cosine signal $x(t)=a\cos(2\pi f_{0}t+\phi)$, 
                whose amplitude $a$, fundamental frequency $f_{0}=1/T_{0}$ and initial phase $\phi$ are unknown.
-               Suppose the only thing you can do is to provide another signal $in(t)$ as input, in which
-               case the black box will output the inner product between the two: $<x(t),in(t)>$. ''')
-st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
-               and phase of the fundamental frequency component of $x(t)$? ''')
+               Suppose the only thing you can do is to provide another signal $in(t)$ as input to this black box, in which
+               case it outputs the inner product between the two: $<x(t),in(t)>$. ''')
+st.markdown('''What kind of input signal $in(t)$ should you use as input to obtain the frequency, amplitude 
+               and phase of the hidden cosine $x(t)$? ''')
    
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -39,7 +39,6 @@ with col3:
    phi=st.slider('Initial phase: phi',-pi,pi,0.0)
    dur=2.0
 
-f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
@@ -55,6 +54,9 @@ xlabel('Time [s])')
 ax1.set_ylim(-2,2)
 ax1.plot(time_stamp,a*cos(2*pi*f0*time_stamp+phi),'o')
 st.pyplot(fig1)
+
+st.markdown('''Let us choose a phasor as $e^{j2\pi ft}$ as input singal $in(t)$, and vary its frequency _f_''')
+f =st.slider('Frequency of the phasor: f [Hz]', -5, 5, 1)
 
 phasor_real=cos(-2*pi*t*f)
 phasor_imag=sin(-2*pi*t*f)
@@ -99,7 +101,7 @@ with col2:
 with st.expander("Open for comments"):
    st.markdown('''The first plot shows a cosine $x(t)$ with adjustable amplitude, frequency $f_0$ 
                   and phase _phi_. \\
-                  The two bottom plots show the product between this signal and a phasor with adjustable 
+                  The two bottom plots show the product between this signal and a phasor $e^{-j2\pi ft}$ with adjustable 
                   frequency $f$. \\
                   - The bottom left plot shows the product signal in the complex plane as a function of time. \\
                   - The bottom right plot shows a side view of the same product signal, in the complex plane.
@@ -107,8 +109,8 @@ with st.expander("Open for comments"):
                   The _time stamp_ slider shows a specific instant on all plots, in orange.''')
    st.markdown('''If we assume that the curve has a uniform weight, its center of gravity (CG) is shown in green. 
                   It is intuivively the place where to support the curve so as to maintain its balance.   ''')
-   st.markdown('''As we can see, the position of the CG of the product between a phasor $e^{j2\pi ft}$ 
-                  and our cosine of frequency _f0_ is non-zero only when _f=f0_ (or _f=-f0_). Its modulus and
+   st.markdown('''As we can see, the position of the CG of the product between phasor $e^{j2\pi ft}$ 
+                  and our cosine with frequency _f0_ is non-zero only when _f=f0_ (or _f=-f0_). Its modulus and
                   argument provide the solution to our problem: the amplitude of the cosine is twice the modulus 
                   of the CG  and the phase of the cosine is the argument of the CG. ''') 
    st.markdown('''If we now assume that each segment of duration $dt$ of the product curve has a mass $dt$ - so that the total 
