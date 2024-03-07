@@ -5,6 +5,12 @@ import matplotlib.patches as mpatches
 from mpl_toolkits import mplot3d
 import cmath as math
 
+def periodic_square(t,f0):
+    return where(abs((t%(1/f0))*f0)<=0.5, 1, -1)
+
+def periodic_sawtooth(t,f0):
+    return 2*(1-abs((t%(1/f0))*f0))-1
+
 def format_radians_label(float_in):
     # Converts a float value in radians into a
     # string representation of that float
@@ -23,36 +29,45 @@ def convert_polar_xticks_to_radians(ax):
 
 st.title('Measuring frequency content')
 
-st.markdown('''Suppose you are given a black box containing some cosine signal $x(t)=a\cos(2\pi f_{0}t+\phi)$, 
-               whose amplitude $a$, fundamental frequency $f_{0}=1/T_{0}$ and initial phase $\phi$ are unknown.
-               Suppose the only thing you can do is to provide another signal $in(t)$ as input to this black box, in which
-               case it outputs the inner product between the two: $<x(t),in(t)>$. ''')
-st.markdown('''What kind of input signal $in(t)$ should you use as input to obtain the frequency, amplitude 
-               and phase of the hidden cosine $x(t)$? ''')
+st.markdown('''Suppose you are given a black box with some unknown periodic signal $x_{T_0}(t)$ in it, 
+               whose fundamental amplitude $a$, frequency $f_{0}=1/T_{0}$ and and initial phase $\phi$ 
+               are unknown.
+               Suppose the only thing you can do is to provide another signal $in(t)$ as input, in which 
+               case the black box will output the inner product between the two: $<x_{T_0}(t),in(t)>$. ''')
+st.markdown('''What kind of periodic signal should you use as input to get the frequency, amplitude 
+               and phase of the fundamental frequency component of $x_{T_0}(t)$? ''')
    
+
+option = st.selectbox(
+     'Choose a periodic signal', ('Cosine', 'Square', 'Sawtooth'))   
+
 col1, col2, col3 = st.columns(3)
 with col1:
-   a=st.slider('Amplitude of the cosine: a ', 0.5, 2.0, 1.0)
+   a=st.slider('Amplitude: a ', 0.5, 2.0, 1.0)
 with col2:
    f0=st.slider('Frequency: f0 [Hz]', 1, 5, 1)*1.0
 with col3:
-   phi=st.slider('Initial phase: phi',-pi,pi,0.0)
+   phi=st.slider('Initial phase: phi [rad]',-pi,pi,0.0)
    dur=2.0
 
 time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
 t=arange(0,dur,1/fe) 
-signal=a*cos(2*pi*f0*t+phi)
+
+if option == 'Cosine' :
+   signal=cos(2*pi*f0*t+phi)
+elif option == 'Square' : 
+    signal=periodic_square(t+(phi/2/np.pi/f0),f0)
+else : signal=periodic_sawtooth(t+(phi/2/np.pi/f0),f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
 plot(t,signal)
 grid()
-title('2 seconds of $x(t)=a\cos(2\pi f_{0}t+\phi)$')
+title('$x(t)$')
 xlabel('Time [s])')   
-ax1.set_ylim(-2,2)
-ax1.plot(time_stamp,a*cos(2*pi*f0*time_stamp+phi),'o')
+ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
 st.pyplot(fig1)
 
 st.markdown('''Let us choose a phasor as $e^{j2\pi ft}$ as input singal $in(t)$, and vary its frequency _f_''')
@@ -65,8 +80,8 @@ prod_imag=multiply(phasor_imag,signal)
 scal_prod_real=sum(prod_real)/fe
 scal_prod_imag=sum(prod_imag)/fe
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
-prod_time_stamp_real=cos(-2*pi*time_stamp*f)*a*cos(2*pi*f0*time_stamp+phi)
-prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*a*cos(2*pi*f0*time_stamp+phi)
+prod_time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
+prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 prod_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(prod_time_stamp_real,prod_time_stamp_imag))
 phasor_time_stamp_real=cos(-2*pi*time_stamp*f)
 phasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
@@ -94,32 +109,32 @@ with col2:
    title(r'$x(t)\ e^{-\ j\ 2\pi\ f\ t}$')
    ax.plot(prod_time_stamp_arg, prod_time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
-   ax.set_ylim(0,1)
    convert_polar_xticks_to_radians(ax)
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
-   st.markdown('''The first plot shows a cosine $x(t)$ with adjustable amplitude, frequency $f_0$ 
-                  and phase _phi_. \\
-                  The two bottom plots show the product between this signal and a phasor $e^{-j2\pi ft}$ with adjustable 
-                  frequency $f$. \\
-                  - The bottom left plot shows the product signal in the complex plane as a function of time. \\
-                  - The bottom right plot shows a side view of the same product signal, in the complex plane.
-                  The circle with unity radius is the trace of the phasor. \\
-                  The _time stamp_ slider shows a specific instant on all plots, in orange.''')
+   st.markdown('''The first plot shows a periodic signal $x_{T_0}(t)$ with adjustable amplitude $a$, frequency $f_0$ 
+                  and phase $phi$.''')
+   st.markdown('''The two bottom plots show the product between this signal and a phasor with adjustable 
+                  frequency $f$: \\
+                  - the bottom left plot shows the product signal (in blue) as a function of time. \\
+                  - the bottom right plot shows a side view of the same product signal, in the complex plane.
+                  The circle with unity radius is the trace of the phasor. ''')
+   st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
    st.markdown('''If we assume that the curve has a uniform weight, its center of gravity (CG) is shown in green. 
                   It is intuivively the place where to support the curve so as to maintain its balance.   ''')
    st.markdown('''As we can see, the position of the CG of the product between phasor $e^{j2\pi ft}$ 
-                  and our cosine with frequency _f0_ is non-zero only when _f=f0_ (or _f=-f0_). Its modulus and
-                  argument provide the solution to our problem: the amplitude of the cosine is twice the modulus 
-                  of the CG  and the phase of the cosine is the argument of the CG. ''') 
+                  and our signal with frequency $f_0$ is non-zero only when $f=k \ f_0$ (with $k$ integer). 
+                  Its modulus and argument for $k=1$ provide the solution to our problem: $a$ is twice the 
+                  modulus of the CG and $phi$ is the argument of the CG. ''') 
    st.markdown('''If we now assume that each segment of duration $dt$ of the product curve has a mass $dt$ - so that the total 
                   mass of one period of this curve is precisely $T_0$ - then this center of gravity is nothing 
                   else than the inner product:''')
-   st.latex('''<x(t),e^{j 2\pi f_0 t}> =\dfrac{\int_{0}^{T_0} x(t)\ e^{-j2\pi f_0 t}\ dt}{T_0}''')
-   st.markdown('''computed on, and normalized by, one period _T0_ of the cosine.''')
-   st.markdown('''Notice, finally, that the only two non-zero inner products give us exactly the composition of our 
-                  cosine in terms of phasors:''')
+   st.latex('''<x_{T_0}(t),e^{j 2\pi f_0 t}> =\dfrac{\int_{0}^{T_0} x{T_0}(t)\ e^{-j2\pi f_0 t}\ dt}{T_0}''')
+   st.markdown('''As a result, our black box will provide this CG as output, i.e., $a$, $f_0$, and $phi$.''')
+   st.markdown('''Notice, finally, that when our periodic signal is a cosine, the only two non-zero inner products 
+                  give us exactly the composition of our cosine in terms of phasors:''')
    st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pi f_0t}>e^{j2\pi f_0 t} + <x(t),e^{-j2\pi f_0 t}>\ e^{-j2\pi f_0 t}''')
    st.latex('''=\dfrac{a}{2} e^{j\phi} e^{j2\pi f_0 t} + \dfrac{a}{2} e^{-j\phi} e^{-j2\pi f_0 t}''')
-   
+   st.markdown('''This can be generalized the inner product of a periodic signal with phasors provides thte frequency content of the signal.''')
+
