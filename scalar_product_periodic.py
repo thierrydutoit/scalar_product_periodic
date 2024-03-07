@@ -48,11 +48,11 @@ with col2:
    f0=st.slider('Frequency: f0 [Hz]', 1, 5, 1)*1.0
 with col3:
    phi=st.slider('Initial phase: phi [rad]',-pi,pi,0.0)
-   dur=2.0
-
-time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
 
 fe=10000;
+dur=2.0
+time_stamp=st.slider('Time stamp [s]', 0.0, dur*1.0, 0.0)
+sample_stamp=int(ceil(time_stamp*fe)-1)
 t=arange(0,dur,1/fe) 
 
 if option == 'Cosine' :
@@ -67,7 +67,7 @@ plot(t,signal)
 grid()
 title('$x_{T_0}(t)$')
 xlabel('Time [s])')   
-ax1.plot(time_stamp,cos(2*pi*f0*time_stamp),'o')
+ax1.plot(time_stamp,signal[sample_stamp],'o')
 st.pyplot(fig1)
 
 st.markdown('''Let us choose a phasor as $e^{j2\pi ft}$ as input singal $in(t)$, and vary its frequency _f_''')
@@ -82,10 +82,11 @@ scal_prod_imag=sum(prod_imag)/fe
 scal_prod_abs,scal_prod_arg=math.polar(complex(scal_prod_real,scal_prod_imag))
 prod_time_stamp_real=cos(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
 prod_time_stamp_imag=sin(-2*pi*time_stamp*f)*cos(2*pi*f0*time_stamp)
+
+prod_time_stamp_real=prod_real[sample_stamp]
+prod_time_stamp_imag=prod_imag[sample_stamp]
+
 prod_time_stamp_abs,prod_time_stamp_arg=math.polar(complex(prod_time_stamp_real,prod_time_stamp_imag))
-phasor_time_stamp_real=cos(-2*pi*time_stamp*f)
-phasor_time_stamp_imag=sin(-2*pi*time_stamp*f)
-phasor_time_stamp_abs,phasor_time_stamp_arg=math.polar(complex(phasor_time_stamp_real,phasor_time_stamp_imag))
 
 col1, col2 = st.columns(2)
 
