@@ -121,21 +121,22 @@ with st.expander("Open for comments"):
                   - the bottom left plot shows the product signal (in blue) as a function of time. \\
                   - the bottom right plot shows a side view of the same product signal, in the complex plane.
                   The circle with unity radius is the trace of the phasor. ''')
-   st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange.''')
+   st.markdown('''The _time stamp_ slider shows a specific instant on all plots, in orange. \\''')
    st.markdown('''If we assume that the curve has a uniform weight, its center of gravity (CG) is shown in green. 
                   It is intuivively the place where to support the curve so as to maintain its balance.   ''')
-   st.markdown('''As we can see, the position of the CG of the product between phasor $e^{j2\pi ft}$ 
-                  and our signal with frequency $f_0$ is non-zero only when $f=k \ f_0$ (with $k$ integer). 
-                  Its modulus and argument for $k=1$ provide the solution to our problem: $a$ is twice the 
-                  modulus of the CG and $phi$ is the argument of the CG. ''') 
    st.markdown('''If we now assume that each segment of duration $dt$ of the product curve has a mass $dt$ - so that the total 
                   mass of one period of this curve is precisely $T_0$ - then this center of gravity is nothing 
                   else than the inner product:''')
-   st.latex('''<x_{T_0}(t),e^{j 2\pi f_0 t}> =\dfrac{\int_{0}^{T_0} x{T_0}(t)\ e^{-j2\pi f_0 t}\ dt}{T_0}''')
-   st.markdown('''As a result, our black box will provide this CG as output, i.e., $a$, $f_0$, and $phi$.''')
-   st.markdown('''Notice, finally, that when our periodic signal is a cosine, the only two non-zero inner products 
+   st.latex('''<x_{T_0}(t),e^{j 2\pi f_0 t}> =\dfrac{\int_{0}^{T_0} x{T_0}(t)\ e^{-j2\pi f_0 t}\ dt}{T_0} \\''')
+   st.markdown('''When our periodic signal is a cosine, the only two non-zero inner products 
                   give us exactly the composition of our cosine in terms of phasors:''')
    st.latex('''a\cos(2\pi f_{0}t+\phi)=<x(t),e^{j2\pi f_0t}>e^{j2\pi f_0 t} + <x(t),e^{-j2\pi f_0 t}>\ e^{-j2\pi f_0 t}''')
    st.latex('''=\dfrac{a}{2} e^{j\phi} e^{j2\pi f_0 t} + \dfrac{a}{2} e^{-j\phi} e^{-j2\pi f_0 t}''')
-   st.markdown('''This can be generalized the inner product of a periodic signal with phasors provides thte frequency content of the signal.''')
-
+   st.markdown('''As we can see, the position of the CG of the product between phasor $e^{j2\pi ft}$ 
+                  and our signal with frequency $f_0$ is non-zero only when $f=f_0$. 
+                  Its modulus and argument provide the solution to our problem: the amplitude $a$ of 
+                  the cosine is equal to twice the modulus of the CG and $phi$ is the argument of the CG. \\ ''') 
+   st.markdown('''This can be generalized : the inner product of any periodic signal with phasors provides thte frequency content of the signal.''')
+   st.markdown('''In this case he position of the CG of the product between phasor $e^{j2\pi ft}$ 
+                  and our signal with frequency $f_0$ is non-zero only when $f=k \ f_0$ (with $k$ integer). ''') 
+   
