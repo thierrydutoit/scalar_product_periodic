@@ -68,7 +68,7 @@ grid()
 title('$x_{T_0}(t)$')
 xlabel('Time [s])')   
 ax1.plot(time_stamp,signal[sample_stamp],'o')
-ax1.set_ylim([-1, 1])
+ax1.set_ylim([-1.2, 1.2])
 st.pyplot(fig1)
 
 st.markdown('''Let us choose a phasor as $e^{j2\pi ft}$ as input singal $in(t)$, and vary its frequency _f_''')
@@ -113,7 +113,7 @@ with col2:
    ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
    convert_polar_xticks_to_radians(ax)
    ax.set_xlim([-1, 1])
-   ax.set_ylim([-1, 1])
+   #ax.set_ylim([-1, 1])
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
