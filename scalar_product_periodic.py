@@ -56,10 +56,10 @@ sample_stamp=int(ceil(time_stamp*fe)-1)
 t=arange(0,dur,1/fe) 
 
 if option == 'Cosine' :
-   signal=cos(2*pi*f0*t+phi)
+   signal=a*cos(2*pi*f0*t+phi)
 elif option == 'Square' : 
-    signal=periodic_square(t+(phi/2/np.pi/f0),f0)
-else : signal=periodic_sawtooth(t+(phi/2/np.pi/f0),f0)
+    signal=a*periodic_square(t+(phi/2/np.pi/f0),f0)
+else : signal=a*periodic_sawtooth(t+(phi/2/np.pi/f0),f0)
 
 fig1,ax1 = subplots(figsize=(10,3))
 xlim(0,dur); 
@@ -94,7 +94,7 @@ with col1:
    fig,ax = subplots(figsize=(3,3),subplot_kw={'projection': '3d'})
    ax.plot3D(t, prod_real, prod_imag)
    #ax.plot3D(t, phasor_real, phasor_imag,'w--')
-   ax.set_xlabel('Time [s])')
+   ax.set_xlabel('Time [s]')
    ax.set_ylabel('real')
    ax.set_zlabel('imag')
    ax.set_ylim(-1,1)
