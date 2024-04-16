@@ -113,7 +113,7 @@ with col2:
    ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
    convert_polar_xticks_to_radians(ax)
    #ax.set_xlim([-1, 1])
-   ax.set_ylim([0, 2*pi])
+   ax.set_ylim([0, 1])
    st.pyplot(fig)
 
 with st.expander("Open for comments"):
