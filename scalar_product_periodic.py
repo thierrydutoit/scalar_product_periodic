@@ -112,7 +112,6 @@ with col2:
    ax.plot(prod_time_stamp_arg, prod_time_stamp_abs,'o')
    ax.plot(scal_prod_arg,scal_prod_abs/dur,'o')
    convert_polar_xticks_to_radians(ax)
-   #ax.set_xlim([-1, 1])
    ax.set_ylim([0, 1])
    st.pyplot(fig)
 
