@@ -123,8 +123,7 @@ with st.expander("Open for comments"):
                   right plot shows a side view of the same product signal, in the complex plane. \\
                   The circle with unity radius is the trace of the phasor. \\
                   Finally, the _time stamp_ slider shows a specific instant on all plots, in orange.''')
-   st.markdown('''If we assume that the product signal has uniform weight, its center of gravity (CG) is shown in green. 
-                  It is intuitively the place where to support the curve so as to maintain its balance. \\
+   st.markdown('''If we assume that the product signal has uniform weight, its center of gravity (CG) is shown in green.\\
                   If we further assume that each segment of duration $dt$ of the product curve has a mass $dt$ - so that 
                   the total mass of one period of this curve is precisely $T_0$ - then this center of gravity is nothing 
                   else than the inner product returned by the black box:''')
